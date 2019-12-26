@@ -1,3 +1,5 @@
+package gameCore;
+
 class Message
 {
     static void showStickCount (int stickCount) {
