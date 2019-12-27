@@ -1,14 +1,14 @@
 package gameCore;
 
-import java.util.Scanner;
-
 public class Game
 {
     private static CompLogic compLogic;
+    private static GamerLogic gamerLogic;
     private static int stickCount;
 
     public Game() {
         compLogic = new CompLogic();
+        gamerLogic = new GamerLogic();
         stickCount = 20;
     }
 
@@ -43,11 +43,11 @@ public class Game
         while (!isValidStickCount) {
             Message.showStickCount(stickCount);
             Message.showGamerRequestStickCount();
-            stickCountChoice = new Scanner(System.in).nextInt();
-            if (!isValidStickCountChoice(stickCountChoice)) {
-                Message.showGamerErrorStickCount();
-            } else {
+            stickCountChoice = gamerLogic.getChoiceStickCount();
+            if (isValidStickCountChoice(stickCountChoice)) {
                 isValidStickCount = true;
+            } else {
+                Message.showGamerErrorStickCount();
             }
         }
 
